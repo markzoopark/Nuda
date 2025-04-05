@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	const currentFontElement = document.getElementById('currentFontName');
 	const enableToggle = document.getElementById('enableToggle');
 	const optionsBtn = document.getElementById('optionsBtn');
-	const refreshBtn = document.getElementById('refreshBtn');
 	const successMessage = document.getElementById('success-message');
 	const errorMessage = document.getElementById('error-message');
 
@@ -25,30 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Обработчик для кнопки настроек
 	optionsBtn.addEventListener('click', function () {
 		chrome.runtime.openOptionsPage();
-	});
-
-	// Обработчик для кнопки обновления страницы
-	refreshBtn.addEventListener('click', function () {
-		chrome.tabs.query(
-			{ active: true, currentWindow: true },
-			function (tabs) {
-				if (tabs[0]) {
-					chrome.tabs.reload(tabs[0].id);
-
-					// Показываем сообщение об успешном применении
-					successMessage.style.display = 'block';
-					setTimeout(function () {
-						successMessage.style.display = 'none';
-					}, 3000);
-				} else {
-					// Показываем сообщение об ошибке
-					errorMessage.style.display = 'block';
-					setTimeout(function () {
-						errorMessage.style.display = 'none';
-					}, 3000);
-				}
-			}
-		);
 	});
 
 	// Обработчик для переключателя

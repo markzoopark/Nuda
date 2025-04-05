@@ -60,6 +60,16 @@
 				font-family: '${selectedFont}', monospace !important;
 			}
 			
+			/* Сохраняем стандартные курсоры для интерактивных элементов */
+			a, button, [role="button"], input[type="submit"], input[type="button"], input[type="reset"] {
+				cursor: pointer !important;
+			}
+			input[type="text"], input[type="password"], input[type="email"], 
+			input[type="number"], input[type="search"], input[type="tel"], 
+			input[type="url"], textarea, select, [contenteditable="true"] {
+				cursor: text !important;
+			}
+			
 			:root {
 				--font-primary: '${selectedFont}', monospace !important;
 				--font-secondary: '${selectedFont}', monospace !important;
