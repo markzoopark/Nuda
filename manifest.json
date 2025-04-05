@@ -1,8 +1,8 @@
 {
 	"manifest_version": 3,
-	"name": "Font Changer",
+	"name": "Nuda",
 	"version": "1.0.0",
-	"description": "Changes all fonts on websites to your preferred font",
+	"description": "Nuda changes all fonts on websites to your preferred font",
 	"icons": {
 		"16": "icons/icon16.png",
 		"48": "icons/icon48.png",

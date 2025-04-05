@@ -18,7 +18,7 @@ function addPrivacyTranslations() {
 	// English translations
 	translations.en.dataCollection = 'Data Collection';
 	translations.en.dataCollectionText =
-		'The Font Changer extension does not collect any user data. It operates completely locally on your device and does not transmit any information to external servers.';
+		'The Nuda extension does not collect any user data. It operates completely locally on your device and does not transmit any information to external servers.';
 	translations.en.permissions = 'Permissions';
 	translations.en.permissionsText =
 		'This extension requires permission to access all websites in order to apply font changes. The extension only modifies the appearance of websites you visit and does not read, collect, or transmit any of your browsing data.';

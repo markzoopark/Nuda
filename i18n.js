@@ -25,9 +25,9 @@ var translations = {
 		settingsSaved: 'Settings saved',
 		about: 'About',
 		extensionDescription:
-			'Font Changer replaces all fonts on web pages with your selected font.',
+			'Nuda replaces all fonts on web pages with your selected font.',
 		version: 'Version: 1.0.0',
-		extensionName: 'Font Changer',
+		extensionName: 'Nuda',
 		errorApplying: 'Error applying font',
 	},
 };

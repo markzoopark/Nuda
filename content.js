@@ -9,12 +9,12 @@
 	// Функция загрузки шрифта и состояния из настроек
 	function loadSettings() {
 		// Сначала удаляем все предыдущие стили, на случай перезагрузки страницы
-		const previousStyle = document.getElementById('font-changer-style');
+		const previousStyle = document.getElementById('nuda-style');
 		if (previousStyle) {
 			previousStyle.remove();
 		}
 
-		const previousReset = document.getElementById('font-changer-reset');
+		const previousReset = document.getElementById('nuda-reset');
 		if (previousReset) {
 			previousReset.remove();
 		}
@@ -41,11 +41,11 @@
 	// Функция для применения шрифта ко всем элементам страницы
 	function applyFontToExistingElements() {
 		// Создаем или обновляем CSS правило
-		let styleElement = document.getElementById('font-changer-style');
+		let styleElement = document.getElementById('nuda-style');
 
 		if (!styleElement) {
 			styleElement = document.createElement('style');
-			styleElement.id = 'font-changer-style';
+			styleElement.id = 'nuda-style';
 			document.head.appendChild(styleElement);
 		}
 
@@ -85,13 +85,13 @@
 	// Функция для удаления стилей шрифта
 	function removeFontStyles() {
 		// Удаляем наш основной стилевой элемент
-		const styleElement = document.getElementById('font-changer-style');
+		const styleElement = document.getElementById('nuda-style');
 		if (styleElement) {
 			styleElement.remove();
 		}
 
 		// Удаляем предыдущий ресет, если он был
-		const resetStyle = document.getElementById('font-changer-reset');
+		const resetStyle = document.getElementById('nuda-reset');
 		if (resetStyle) {
 			resetStyle.remove();
 		}
