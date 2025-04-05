@@ -3,17 +3,37 @@
 
 (function () {
 	// Переменная для хранения выбранного шрифта
-	let selectedFont = 'Fira Code'; // Значение по умолчанию
+	let selectedFont = 'Arial'; // Значение по умолчанию
+	let extensionEnabled = true; // Состояние расширения (включено/выключено)
 
-	// Функция загрузки шрифта из настроек
-	function loadFontSettings() {
+	// Функция загрузки шрифта и состояния из настроек
+	function loadSettings() {
+		// Сначала удаляем все предыдущие стили, на случай перезагрузки страницы
+		const previousStyle = document.getElementById('font-changer-style');
+		if (previousStyle) {
+			previousStyle.remove();
+		}
+
+		const previousReset = document.getElementById('font-changer-reset');
+		if (previousReset) {
+			previousReset.remove();
+		}
+
 		chrome.storage.sync.get(
 			{
-				fontFamily: 'Fira Code', // Значение по умолчанию
+				fontFamily: 'Arial', // Значение по умолчанию
+				enabled: true, // Включено по умолчанию
 			},
 			function (items) {
 				selectedFont = items.fontFamily;
-				applyFontToExistingElements();
+				extensionEnabled = items.enabled;
+
+				// Применяем шрифт только если расширение включено
+				if (extensionEnabled) {
+					applyFontToExistingElements();
+				} else {
+					removeFontStyles();
+				}
 			}
 		);
 	}
@@ -52,6 +72,24 @@
 		`;
 	}
 
+	// Функция для удаления стилей шрифта
+	function removeFontStyles() {
+		// Удаляем наш основной стилевой элемент
+		const styleElement = document.getElementById('font-changer-style');
+		if (styleElement) {
+			styleElement.remove();
+		}
+
+		// Удаляем предыдущий ресет, если он был
+		const resetStyle = document.getElementById('font-changer-reset');
+		if (resetStyle) {
+			resetStyle.remove();
+		}
+
+		// Вместо создания нового стиля, который перезаписывает все шрифты,
+		// просто удаляем наши стили и позволяем оригинальным стилям сайта восстановиться
+	}
+
 	// Функция для наблюдения за изменениями DOM
 	function applyFontToNewElements() {
 		// Observe changes to DOM
@@ -78,14 +116,49 @@
 
 	// Слушаем изменения настроек
 	chrome.storage.onChanged.addListener(function (changes, namespace) {
-		if (namespace === 'sync' && changes.fontFamily) {
-			selectedFont = changes.fontFamily.newValue;
-			applyFontToExistingElements();
+		if (namespace === 'sync') {
+			// Проверяем изменение шрифта
+			if (changes.fontFamily) {
+				selectedFont = changes.fontFamily.newValue;
+				if (extensionEnabled) {
+					applyFontToExistingElements();
+				}
+			}
+
+			// Проверяем изменение состояния (включено/выключено)
+			if (changes.enabled !== undefined) {
+				extensionEnabled = changes.enabled.newValue;
+				if (extensionEnabled) {
+					applyFontToExistingElements();
+				} else {
+					removeFontStyles();
+				}
+			}
 		}
 	});
 
-	// Загружаем шрифт перед началом
-	loadFontSettings();
+	// Слушаем сообщения от popup
+	chrome.runtime.onMessage.addListener(function (
+		message,
+		sender,
+		sendResponse
+	) {
+		if (message.action === 'enable') {
+			extensionEnabled = true;
+			applyFontToExistingElements();
+			sendResponse({ success: true });
+		} else if (message.action === 'disable') {
+			extensionEnabled = false;
+			removeFontStyles();
+			sendResponse({ success: true });
+		}
+
+		// Возвращаем true для асинхронной обработки
+		return true;
+	});
+
+	// Загружаем настройки перед началом
+	loadSettings();
 
 	// Run when DOM is loaded
 	if (document.readyState === 'loading') {

@@ -55,31 +55,46 @@ document.addEventListener('DOMContentLoaded', function () {
 	enableToggle.addEventListener('change', function () {
 		const enabled = enableToggle.checked;
 
-		// Сохраняем состояние
+		// Сначала сохраняем состояние в настройках
 		chrome.storage.sync.set({ enabled: enabled }, function () {
-			// Применяем или отключаем шрифт на всех вкладках
+			// Показываем сообщение об успешном действии
+			successMessage.style.display = 'block';
+			setTimeout(function () {
+				successMessage.style.display = 'none';
+			}, 2000);
+
+			// Находим активную вкладку и перезагружаем ее для применения/удаления шрифта
+			chrome.tabs.query(
+				{ active: true, currentWindow: true },
+				function (tabs) {
+					if (tabs[0]) {
+						// Перезагружаем активную вкладку для применения изменений
+						chrome.tabs.reload(tabs[0].id);
+					}
+				}
+			);
+
+			// А также отправляем сообщение всем вкладкам
 			chrome.tabs.query({}, function (tabs) {
 				tabs.forEach(function (tab) {
-					chrome.tabs.sendMessage(
-						tab.id,
-						{ action: enabled ? 'enable' : 'disable' },
-						function (response) {
-							// Обработка ошибки если вкладка не загружена
-							if (chrome.runtime.lastError) {
-								console.log(
-									'Ошибка отправки сообщения на вкладку:',
-									chrome.runtime.lastError
-								);
+					try {
+						chrome.tabs.sendMessage(
+							tab.id,
+							{ action: enabled ? 'enable' : 'disable' },
+							function (response) {
+								// Игнорируем ошибки для вкладок, которые не могут получать сообщения
+								if (chrome.runtime.lastError) {
+									console.log(
+										'Ошибка отправки сообщения на вкладку:',
+										chrome.runtime.lastError
+									);
+								}
 							}
-						}
-					);
+						);
+					} catch (e) {
+						console.log('Ошибка при отправке сообщения:', e);
+					}
 				});
-
-				// Показываем сообщение
-				successMessage.style.display = 'block';
-				setTimeout(function () {
-					successMessage.style.display = 'none';
-				}, 3000);
 			});
 		});
 	});
