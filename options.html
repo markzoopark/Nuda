@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Options - Font Changer</title>
+		<style>
+			body {
+				font-family: system-ui, -apple-system, BlinkMacSystemFont,
+					'Segoe UI', Roboto, sans-serif;
+				margin: 0;
+				padding: 20px;
+				max-width: 800px;
+				margin: 0 auto;
+				line-height: 1.6;
+			}
+			h1 {
+				color: #333;
+			}
+			.container {
+				padding: 20px;
+			}
+			.option-group {
+				margin-bottom: 20px;
+				padding: 15px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+			}
+			label {
+				display: block;
+				margin-bottom: 5px;
+				font-weight: bold;
+			}
+			select,
+			input {
+				width: 100%;
+				padding: 8px;
+				margin-bottom: 15px;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				font-family: inherit;
+			}
+			button {
+				background-color: #4caf50;
+				border: none;
+				color: white;
+				padding: 10px 15px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+				border-radius: 4px;
+			}
+			button:disabled {
+				background-color: #cccccc;
+				cursor: not-allowed;
+			}
+			.status {
+				margin-top: 15px;
+				padding: 10px;
+				border-radius: 4px;
+				display: none;
+			}
+			.success {
+				background-color: #dff0d8;
+				color: #3c763d;
+				display: block;
+			}
+			.font-preview {
+				margin-top: 15px;
+				padding: 10px;
+				border: 1px dashed #ddd;
+				border-radius: 4px;
+			}
+			.or-separator {
+				text-align: center;
+				margin: 15px 0;
+				position: relative;
+			}
+			.or-separator:before,
+			.or-separator:after {
+				content: '';
+				display: block;
+				width: 40%;
+				height: 1px;
+				background: #ddd;
+				position: absolute;
+				top: 50%;
+			}
+			.or-separator:before {
+				left: 0;
+			}
+			.or-separator:after {
+				right: 0;
+			}
+			.language-selector {
+				margin-bottom: 20px;
+				text-align: right;
+			}
+			.language-selector select {
+				width: auto;
+				margin-left: 5px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="language-selector">
+				<label for="language-select" style="display: inline"
+					>Language:</label
+				>
+				<select
+					id="language-select"
+					style="width: auto; display: inline-block; margin-bottom: 0"
+				>
+					<option value="en">English</option>
+					<option value="ru">Русский</option>
+					<option value="uk">Українська</option>
+				</select>
+			</div>
+
+			<h1>Font Changer Options</h1>
+
+			<div class="option-group">
+				<h2 data-i18n="fontSettings">Font Settings</h2>
+				<p data-i18n="fontDescription">
+					Choose a preset font or enter the name of any font installed
+					on your computer.
+				</p>
+
+				<label for="font-select" data-i18n="chooseFromList"
+					>Choose from list:</label
+				>
+				<select id="font-select">
+					<option value="Fira Code">Fira Code</option>
+					<option value="Roboto Mono">Roboto Mono</option>
+					<option value="JetBrains Mono">JetBrains Mono</option>
+					<option value="Source Code Pro">Source Code Pro</option>
+					<option value="Arial">Arial</option>
+					<option value="Helvetica">Helvetica</option>
+					<option value="Times New Roman">Times New Roman</option>
+					<option value="Courier New">Courier New</option>
+					<option value="custom" data-i18n="customFont">
+						Custom font...
+					</option>
+				</select>
+
+				<div id="custom-font-container" style="display: none">
+					<div class="or-separator" data-i18n="or">or</div>
+					<label for="custom-font" data-i18n="enterFontName"
+						>Enter font name:</label
+					>
+					<input
+						type="text"
+						id="custom-font"
+						data-i18n-placeholder="enterExactFontName"
+						placeholder="Enter exact font name"
+					/>
+					<p class="note" data-i18n="fontNote">
+						Note: the font must be installed on your computer
+					</p>
+				</div>
+
+				<div class="font-preview">
+					<p data-i18n="fontPreview">Font preview:</p>
+					<p id="preview-text" style="font-size: 16px">
+						The quick brown fox jumps over the lazy dog. 0123456789
+					</p>
+				</div>
+
+				<button id="save" data-i18n="saveSettings">
+					Save Settings
+				</button>
+				<div id="status" class="status" data-i18n="settingsSaved">
+					Settings saved
+				</div>
+			</div>
+
+			<div class="option-group">
+				<h2 data-i18n="about">About</h2>
+				<p data-i18n="extensionDescription">
+					Font Changer replaces all fonts on web pages with your
+					selected font.
+				</p>
+				<p data-i18n="version">Version: 1.0.0</p>
+				<p>
+					<a href="privacy.html" data-i18n="privacyPolicy"
+						>Privacy Policy</a
+					>
+				</p>
+			</div>
+		</div>
+
+		<script src="i18n.js"></script>
+		<script src="options.js"></script>
+	</body>
+</html>

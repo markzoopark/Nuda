@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Privacy Policy - Font Changer</title>
+		<style>
+			body {
+				font-family: system-ui, -apple-system, BlinkMacSystemFont,
+					'Segoe UI', Roboto, sans-serif;
+				margin: 0;
+				padding: 20px;
+				max-width: 800px;
+				margin: 0 auto;
+				line-height: 1.6;
+			}
+			h1,
+			h2 {
+				color: #333;
+			}
+			.container {
+				padding: 20px;
+			}
+			.language-selector {
+				margin-bottom: 20px;
+				text-align: right;
+			}
+			.language-selector select {
+				width: auto;
+				margin-left: 5px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="language-selector">
+				<label for="language-select" style="display: inline"
+					>Language:</label
+				>
+				<select
+					id="language-select"
+					style="width: auto; display: inline-block; margin-bottom: 0"
+				>
+					<option value="en">English</option>
+					<option value="ru">Русский</option>
+					<option value="uk">Українська</option>
+				</select>
+			</div>
+
+			<h1 data-i18n="privacyPolicy">Privacy Policy</h1>
+
+			<h2 data-i18n="dataCollection">Data Collection</h2>
+			<p data-i18n="dataCollectionText">
+				The Font Changer extension does not collect any user data. It
+				operates completely locally on your device and does not transmit
+				any information to external servers.
+			</p>
+
+			<h2 data-i18n="permissions">Permissions</h2>
+			<p data-i18n="permissionsText">
+				This extension requires permission to access all websites in
+				order to apply font changes. The extension only modifies the
+				appearance of websites you visit and does not read, collect, or
+				transmit any of your browsing data.
+			</p>
+
+			<h2 data-i18n="localStorage">Local Storage</h2>
+			<p data-i18n="localStorageText">
+				The extension does not store any personal information. Any
+				preferences you set will be stored locally in your browser using
+				Chrome's storage API and will not be shared with anyone.
+			</p>
+
+			<h2 data-i18n="updates">Updates</h2>
+			<p data-i18n="updatesText">
+				This privacy policy may be updated in the future. Changes will
+				be reflected in the extension's store listing and in this
+				privacy policy document.
+			</p>
+
+			<h2 data-i18n="contact">Contact</h2>
+			<p data-i18n="contactText">
+				If you have any questions about this privacy policy, you can
+				contact the developer through the Chrome Web Store support
+				channel.
+			</p>
+
+			<p><em data-i18n="lastUpdated">Last updated: January 2024</em></p>
+		</div>
+
+		<script src="i18n.js"></script>
+		<script>
+			// Add privacy policy translations
+			translations.en.dataCollection = 'Data Collection';
+			translations.en.dataCollectionText =
+				'The Font Changer extension does not collect any user data. It operates completely locally on your device and does not transmit any information to external servers.';
+			translations.en.permissions = 'Permissions';
+			translations.en.permissionsText =
+				'This extension requires permission to access all websites in order to apply font changes. The extension only modifies the appearance of websites you visit and does not read, collect, or transmit any of your browsing data.';
+			translations.en.localStorage = 'Local Storage';
+			translations.en.localStorageText =
+				"The extension does not store any personal information. Any preferences you set will be stored locally in your browser using Chrome's storage API and will not be shared with anyone.";
+			translations.en.updates = 'Updates';
+			translations.en.updatesText =
+				"This privacy policy may be updated in the future. Changes will be reflected in the extension's store listing and in this privacy policy document.";
+			translations.en.contact = 'Contact';
+			translations.en.contactText =
+				'If you have any questions about this privacy policy, you can contact the developer through the Chrome Web Store support channel.';
+			translations.en.lastUpdated = 'Last updated: January 2024';
+
+			translations.ru.dataCollection = 'Сбор данных';
+			translations.ru.dataCollectionText =
+				'Расширение Font Changer не собирает никаких пользовательских данных. Оно работает полностью локально на вашем устройстве и не передает информацию на внешние серверы.';
+			translations.ru.permissions = 'Разрешения';
+			translations.ru.permissionsText =
+				'Это расширение требует разрешения на доступ ко всем веб-сайтам для применения изменений шрифта. Расширение только изменяет внешний вид посещаемых вами веб-сайтов и не читает, не собирает и не передает никаких данных о вашем просмотре.';
+			translations.ru.localStorage = 'Локальное хранилище';
+			translations.ru.localStorageText =
+				'Расширение не хранит никакой личной информации. Любые настройки, которые вы устанавливаете, будут храниться локально в вашем браузере с помощью API хранилища Chrome и не будут переданы никому.';
+			translations.ru.updates = 'Обновления';
+			translations.ru.updatesText =
+				'Эта политика конфиденциальности может быть обновлена в будущем. Изменения будут отражены в списке расширений магазина Chrome и в этом документе о политике конфиденциальности.';
+			translations.ru.contact = 'Контакты';
+			translations.ru.contactText =
+				'Если у вас есть вопросы об этой политике конфиденциальности, вы можете связаться с разработчиком через канал поддержки Chrome Web Store.';
+			translations.ru.lastUpdated = 'Последнее обновление: январь 2024';
+
+			translations.uk.dataCollection = 'Збір даних';
+			translations.uk.dataCollectionText =
+				'Розширення Font Changer не збирає жодних користувацьких даних. Воно працює повністю локально на вашому пристрої і не передає інформацію на зовнішні сервери.';
+			translations.uk.permissions = 'Дозволи';
+			translations.uk.permissionsText =
+				'Це розширення потребує дозволу на доступ до всіх веб-сайтів для застосування змін шрифту. Розширення лише змінює зовнішній вигляд веб-сайтів, які ви відвідуєте, і не читає, не збирає та не передає жодних даних про ваш перегляд.';
+			translations.uk.localStorage = 'Локальне сховище';
+			translations.uk.localStorageText =
+				'Розширення не зберігає жодної особистої інформації. Будь-які налаштування, які ви встановлюєте, зберігатимуться локально у вашому браузері за допомогою API сховища Chrome і не будуть передані нікому.';
+			translations.uk.updates = 'Оновлення';
+			translations.uk.updatesText =
+				'Ця політика конфіденційності може бути оновлена в майбутньому. Зміни будуть відображені в списку розширень магазину Chrome та в цьому документі про політику конфіденційності.';
+			translations.uk.contact = 'Контакти';
+			translations.uk.contactText =
+				"Якщо у вас є питання щодо цієї політики конфіденційності, ви можете зв'язатися з розробником через канал підтримки Chrome Web Store.";
+			translations.uk.lastUpdated = 'Останнє оновлення: січень 2024';
+		</script>
+	</body>
+</html>

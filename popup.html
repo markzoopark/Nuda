@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Font Changer</title>
+		<style>
+			body {
+				font-family: system-ui, -apple-system, sans-serif;
+				margin: 0;
+				padding: 15px;
+				width: 250px;
+				text-align: center;
+			}
+			.container {
+				padding: 10px;
+			}
+			.status {
+				color: #4caf50;
+				font-weight: bold;
+				margin: 12px 0;
+			}
+			.current-font {
+				margin: 10px 0;
+				padding: 8px;
+				background-color: #f5f5f5;
+				border-radius: 4px;
+				font-weight: bold;
+			}
+			.buttons {
+				margin-top: 15px;
+			}
+			.button {
+				display: inline-block;
+				background-color: #2196f3;
+				color: white;
+				padding: 8px 12px;
+				border-radius: 4px;
+				text-decoration: none;
+				margin: 5px;
+				font-size: 14px;
+			}
+			.footer {
+				margin-top: 15px;
+				font-size: 12px;
+			}
+			.footer a {
+				color: #2196f3;
+				text-decoration: none;
+			}
+			.language-selector {
+				text-align: right;
+				margin-bottom: 10px;
+				font-size: 12px;
+			}
+			.language-selector select {
+				margin-left: 5px;
+				font-size: 12px;
+				padding: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="language-selector">
+				<select id="language-select">
+					<option value="en">English</option>
+					<option value="ru">Русский</option>
+					<option value="uk">Українська</option>
+				</select>
+			</div>
+
+			<h2>Font Changer</h2>
+			<p class="status" data-i18n="fontApplied">
+				Font is applied globally
+			</p>
+
+			<div id="current-font-container">
+				<p data-i18n="currentFont">Current font:</p>
+				<div class="current-font" id="current-font">Loading...</div>
+			</div>
+
+			<div class="buttons">
+				<a
+					href="options.html"
+					target="_blank"
+					class="button"
+					data-i18n="changeFont"
+					>Change Font</a
+				>
+			</div>
+
+			<div class="footer">
+				<a href="privacy.html" target="_blank" data-i18n="privacyPolicy"
+					>Privacy Policy</a
+				>
+			</div>
+		</div>
+
+		<script src="i18n.js"></script>
+		<script src="popup.js"></script>
+	</body>
+</html>

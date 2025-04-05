@@ -1,0 +1,21 @@
+/* 
+   Этот файл теперь содержит только общие стили.
+   Конкретный шрифт применяется динамически через content.js 
+   в зависимости от настроек пользователя.
+*/
+
+/* Фиксируем возможные проблемы с рендерингом шрифтов */
+* {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Исправление для моноширинных шрифтов */
+pre,
+code,
+kbd,
+samp {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
