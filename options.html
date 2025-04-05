@@ -5,113 +5,360 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Options - Font Changer</title>
 		<style>
+			:root {
+				--primary-color: #4361ee;
+				--primary-hover: #3a56d4;
+				--success-color: #4caf50;
+				--bg-color: #f9f9fb;
+				--card-bg: #ffffff;
+				--text-color: #333333;
+				--border-color: #e0e0e0;
+				--shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
+				--shadow-md: 0 4px 10px rgba(0, 0, 0, 0.12);
+				--shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+				--radius-sm: 6px;
+				--radius-md: 10px;
+				--radius-lg: 16px;
+				--transition-normal: all 0.3s ease;
+			}
+
 			body {
 				font-family: system-ui, -apple-system, BlinkMacSystemFont,
 					'Segoe UI', Roboto, sans-serif;
 				margin: 0;
-				padding: 20px;
+				padding: 0;
+				background-color: var(--bg-color);
+				color: var(--text-color);
+				line-height: 1.6;
+				min-height: 100vh;
+			}
+
+			h1 {
+				color: var(--text-color);
+				font-weight: 700;
+				margin-bottom: 1.5rem;
+				font-size: 2rem;
+				position: relative;
+				display: inline-block;
+			}
+
+			h1:after {
+				content: '';
+				position: absolute;
+				width: 50%;
+				height: 4px;
+				background: linear-gradient(
+					to right,
+					var(--primary-color),
+					transparent
+				);
+				bottom: -8px;
+				left: 0;
+				border-radius: 2px;
+			}
+
+			.container {
 				max-width: 800px;
 				margin: 0 auto;
-				line-height: 1.6;
+				padding: 30px;
 			}
-			h1 {
-				color: #333;
-			}
-			.container {
-				padding: 20px;
-			}
+
 			.option-group {
-				margin-bottom: 20px;
-				padding: 15px;
-				border: 1px solid #ddd;
-				border-radius: 5px;
+				margin-bottom: 30px;
+				padding: 25px;
+				border-radius: var(--radius-md);
+				background-color: var(--card-bg);
+				box-shadow: var(--shadow-md);
+				transition: var(--transition-normal);
+				border: 1px solid var(--border-color);
+				overflow: hidden;
+				position: relative;
 			}
+
+			.option-group:hover {
+				box-shadow: var(--shadow-lg);
+				transform: translateY(-3px);
+			}
+
+			.option-group::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 4px;
+				height: 100%;
+				background-color: var(--primary-color);
+				opacity: 0.7;
+			}
+
+			.option-group h2 {
+				color: var(--primary-color);
+				font-weight: 600;
+				margin-top: 0;
+				margin-bottom: 1rem;
+				border-bottom: 1px solid var(--border-color);
+				padding-bottom: 10px;
+			}
+
 			label {
 				display: block;
-				margin-bottom: 5px;
-				font-weight: bold;
+				margin-bottom: 8px;
+				font-weight: 600;
+				font-size: 0.95rem;
+				color: #444;
 			}
+
 			select,
 			input {
 				width: 100%;
-				padding: 8px;
-				margin-bottom: 15px;
-				border: 1px solid #ddd;
-				border-radius: 4px;
+				padding: 12px 15px;
+				margin-bottom: 20px;
+				border: 1px solid var(--border-color);
+				border-radius: var(--radius-sm);
 				font-family: inherit;
+				font-size: 1rem;
+				background-color: #fff;
+				box-shadow: var(--shadow-sm);
+				transition: var(--transition-normal);
 			}
+
+			select:hover,
+			input:hover {
+				border-color: #bbb;
+			}
+
+			select:focus,
+			input:focus {
+				outline: none;
+				border-color: var(--primary-color);
+				box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+			}
+
 			button {
-				background-color: #4caf50;
+				background-color: var(--primary-color);
 				border: none;
 				color: white;
-				padding: 10px 15px;
+				padding: 12px 20px;
 				text-align: center;
 				text-decoration: none;
 				display: inline-block;
-				font-size: 16px;
+				font-size: 1rem;
+				font-weight: 500;
 				margin: 4px 2px;
 				cursor: pointer;
-				border-radius: 4px;
+				border-radius: var(--radius-sm);
+				box-shadow: var(--shadow-sm);
+				transition: var(--transition-normal);
+				position: relative;
+				overflow: hidden;
 			}
+
+			button:hover {
+				background-color: var(--primary-hover);
+				box-shadow: var(--shadow-md);
+				transform: translateY(-2px);
+			}
+
+			button:active {
+				transform: translateY(1px);
+				box-shadow: var(--shadow-sm);
+			}
+
+			button::after {
+				content: '';
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				background-color: rgba(255, 255, 255, 0.3);
+				border-radius: 50%;
+				transform: scale(0);
+				top: calc(50% - 25px);
+				left: calc(50% - 25px);
+				transition: transform 0.5s ease-out;
+			}
+
+			button:active::after {
+				transform: scale(3);
+				opacity: 0;
+			}
+
 			button:disabled {
 				background-color: #cccccc;
 				cursor: not-allowed;
+				box-shadow: none;
+				transform: none;
 			}
+
 			.status {
 				margin-top: 15px;
-				padding: 10px;
-				border-radius: 4px;
+				padding: 12px 15px;
+				border-radius: var(--radius-sm);
 				display: none;
+				opacity: 0;
+				transform: translateY(10px);
+				transition: all 0.3s ease;
 			}
+
 			.success {
-				background-color: #dff0d8;
-				color: #3c763d;
+				background-color: rgba(76, 175, 80, 0.1);
+				color: #2e7d32;
+				border-left: 3px solid var(--success-color);
 				display: block;
+				opacity: 1;
+				transform: translateY(0);
 			}
+
 			.font-preview {
-				margin-top: 15px;
-				padding: 10px;
-				border: 1px dashed #ddd;
-				border-radius: 4px;
+				margin-top: 25px;
+				padding: 20px;
+				border-radius: var(--radius-md);
+				background: linear-gradient(145deg, #f5f5f5, #ffffff);
+				box-shadow: var(--shadow-sm);
+				transition: var(--transition-normal);
 			}
+
+			.font-preview:hover {
+				box-shadow: var(--shadow-md);
+			}
+
+			.font-preview p:first-child {
+				font-weight: 600;
+				margin-top: 0;
+				font-size: 0.9rem;
+				color: #555;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			#preview-text {
+				margin-bottom: 0;
+				padding: 15px;
+				background-color: #fff;
+				border-radius: var(--radius-sm);
+				border: 1px dashed var(--border-color);
+				font-size: 16px;
+				line-height: 1.6;
+			}
+
 			.or-separator {
 				text-align: center;
-				margin: 15px 0;
+				margin: 20px 0;
 				position: relative;
+				color: #777;
+				font-weight: 500;
 			}
+
 			.or-separator:before,
 			.or-separator:after {
 				content: '';
 				display: block;
-				width: 40%;
+				width: 45%;
 				height: 1px;
-				background: #ddd;
+				background: linear-gradient(
+					to right,
+					var(--border-color),
+					transparent
+				);
 				position: absolute;
 				top: 50%;
 			}
+
 			.or-separator:before {
 				left: 0;
 			}
+
 			.or-separator:after {
 				right: 0;
+				background: linear-gradient(
+					to left,
+					var(--border-color),
+					transparent
+				);
 			}
-			.language-selector {
+
+			#custom-font-container {
+				animation: slideDown 0.3s ease forwards;
+				background-color: rgba(240, 240, 245, 0.3);
+				border-radius: var(--radius-sm);
+				padding: 20px;
 				margin-bottom: 20px;
-				text-align: right;
+				box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 			}
+
+			@keyframes slideDown {
+				from {
+					opacity: 0;
+					transform: translateY(-20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.language-selector {
+				margin-bottom: 30px;
+				text-align: right;
+				position: relative;
+				z-index: 10;
+			}
+
 			.language-selector select {
 				width: auto;
 				margin-left: 5px;
 				display: inline-block;
+				margin-bottom: 0;
+				padding: 8px 12px;
+				background-color: var(--card-bg);
+				border-radius: var(--radius-sm);
+				font-size: 0.9rem;
+				cursor: pointer;
+			}
+
+			.language-selector label {
+				display: inline;
+				font-weight: 500;
+				margin-right: 5px;
+				color: #555;
+			}
+
+			.note {
+				font-size: 0.85rem;
+				color: #666;
+				font-style: italic;
+				margin-top: 5px;
+			}
+
+			/* Animate elements on page load */
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.option-group {
+				opacity: 0;
+				animation: fadeInUp 0.5s ease forwards;
+			}
+
+			.option-group:nth-child(1) {
+				animation-delay: 0.1s;
+			}
+
+			.option-group:nth-child(2) {
+				animation-delay: 0.3s;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="language-selector">
-				<label for="language-select" style="display: inline"
-					>Language:</label
-				>
+				<label for="language-select">Language:</label>
 				<select
 					id="language-select"
 					style="width: auto; display: inline-block; margin-bottom: 0"
@@ -166,7 +413,7 @@
 
 				<div class="font-preview">
 					<p data-i18n="fontPreview">Font preview:</p>
-					<p id="preview-text" style="font-size: 16px">
+					<p id="preview-text">
 						The quick brown fox jumps over the lazy dog. 0123456789
 					</p>
 				</div>

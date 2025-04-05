@@ -5,30 +5,206 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Privacy Policy - Font Changer</title>
 		<style>
+			:root {
+				--primary-color: #4361ee;
+				--primary-hover: #3a56d4;
+				--success-color: #4caf50;
+				--bg-color: #f9f9fb;
+				--card-bg: #ffffff;
+				--text-color: #333333;
+				--text-secondary: #666666;
+				--border-color: #e0e0e0;
+				--shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
+				--shadow-md: 0 4px 10px rgba(0, 0, 0, 0.12);
+				--shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+				--radius-sm: 6px;
+				--radius-md: 10px;
+				--radius-lg: 16px;
+				--transition-normal: all 0.3s ease;
+			}
+
 			body {
 				font-family: system-ui, -apple-system, BlinkMacSystemFont,
 					'Segoe UI', Roboto, sans-serif;
 				margin: 0;
-				padding: 20px;
-				max-width: 800px;
-				margin: 0 auto;
+				padding: 0;
+				background-color: var(--bg-color);
+				color: var(--text-color);
 				line-height: 1.6;
+				min-height: 100vh;
 			}
+
 			h1,
 			h2 {
-				color: #333;
+				color: var(--text-color);
 			}
+
+			h1 {
+				font-size: 2.2rem;
+				margin-bottom: 1.5rem;
+				position: relative;
+				display: inline-block;
+				font-weight: 700;
+				background: linear-gradient(
+					90deg,
+					var(--primary-color),
+					#3a86ff
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			h1::after {
+				content: '';
+				position: absolute;
+				width: 50%;
+				height: 4px;
+				background: linear-gradient(
+					to right,
+					var(--primary-color),
+					transparent
+				);
+				bottom: -10px;
+				left: 0;
+				border-radius: 2px;
+			}
+
+			h2 {
+				font-size: 1.3rem;
+				font-weight: 600;
+				margin-top: 2rem;
+				margin-bottom: 1rem;
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid var(--border-color);
+				color: var(--primary-color);
+			}
+
 			.container {
-				padding: 20px;
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 30px;
+				background-color: var(--card-bg);
+				box-shadow: var(--shadow-md);
+				border-radius: var(--radius-md);
+				margin-top: 30px;
+				margin-bottom: 30px;
+				position: relative;
+				overflow: hidden;
+				animation: fadeIn 0.5s ease;
 			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.container::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 5px;
+				background: linear-gradient(
+					90deg,
+					var(--primary-color),
+					#3a86ff
+				);
+			}
+
+			p {
+				margin-bottom: 1.2rem;
+				color: var(--text-secondary);
+			}
+
+			em {
+				color: #888;
+				font-size: 0.9rem;
+				display: block;
+				margin-top: 2rem;
+				padding-top: 1rem;
+				border-top: 1px solid var(--border-color);
+			}
+
 			.language-selector {
 				margin-bottom: 20px;
 				text-align: right;
+				position: relative;
+				z-index: 10;
 			}
+
 			.language-selector select {
 				width: auto;
 				margin-left: 5px;
 				display: inline-block;
+				padding: 8px 12px;
+				border: 1px solid var(--border-color);
+				border-radius: var(--radius-sm);
+				background-color: var(--card-bg);
+				cursor: pointer;
+				font-size: 0.9rem;
+				transition: var(--transition-normal);
+			}
+
+			.language-selector select:focus {
+				outline: none;
+				border-color: var(--primary-color);
+				box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+			}
+
+			.language-selector label {
+				font-weight: 500;
+				color: #555;
+			}
+
+			/* Section styling */
+			.policy-section {
+				padding: 15px;
+				margin-bottom: 20px;
+				border-radius: var(--radius-sm);
+				background-color: rgba(67, 97, 238, 0.03);
+				transition: var(--transition-normal);
+				border: 1px solid rgba(67, 97, 238, 0.1);
+			}
+
+			.policy-section:hover {
+				background-color: rgba(67, 97, 238, 0.05);
+				box-shadow: var(--shadow-sm);
+				transform: translateY(-2px);
+			}
+
+			.policy-section h2 {
+				margin-top: 0;
+				border-bottom: none;
+			}
+
+			.policy-section p {
+				margin-bottom: 0;
+			}
+
+			/* Back button */
+			.back-button {
+				display: inline-block;
+				margin-top: 20px;
+				padding: 8px 15px;
+				background-color: var(--primary-color);
+				color: white;
+				text-decoration: none;
+				border-radius: var(--radius-sm);
+				font-size: 0.9rem;
+				font-weight: 500;
+				transition: var(--transition-normal);
+			}
+
+			.back-button:hover {
+				background-color: var(--primary-hover);
+				box-shadow: var(--shadow-sm);
 			}
 		</style>
 	</head>
@@ -50,98 +226,59 @@
 
 			<h1 data-i18n="privacyPolicy">Privacy Policy</h1>
 
-			<h2 data-i18n="dataCollection">Data Collection</h2>
-			<p data-i18n="dataCollectionText">
-				The Font Changer extension does not collect any user data. It
-				operates completely locally on your device and does not transmit
-				any information to external servers.
-			</p>
+			<div class="policy-section">
+				<h2 data-i18n="dataCollection">Data Collection</h2>
+				<p data-i18n="dataCollectionText">
+					The Font Changer extension does not collect any user data.
+					It operates completely locally on your device and does not
+					transmit any information to external servers.
+				</p>
+			</div>
 
-			<h2 data-i18n="permissions">Permissions</h2>
-			<p data-i18n="permissionsText">
-				This extension requires permission to access all websites in
-				order to apply font changes. The extension only modifies the
-				appearance of websites you visit and does not read, collect, or
-				transmit any of your browsing data.
-			</p>
+			<div class="policy-section">
+				<h2 data-i18n="permissions">Permissions</h2>
+				<p data-i18n="permissionsText">
+					This extension requires permission to access all websites in
+					order to apply font changes. The extension only modifies the
+					appearance of websites you visit and does not read, collect,
+					or transmit any of your browsing data.
+				</p>
+			</div>
 
-			<h2 data-i18n="localStorage">Local Storage</h2>
-			<p data-i18n="localStorageText">
-				The extension does not store any personal information. Any
-				preferences you set will be stored locally in your browser using
-				Chrome's storage API and will not be shared with anyone.
-			</p>
+			<div class="policy-section">
+				<h2 data-i18n="localStorage">Local Storage</h2>
+				<p data-i18n="localStorageText">
+					The extension does not store any personal information. Any
+					preferences you set will be stored locally in your browser
+					using Chrome's storage API and will not be shared with
+					anyone.
+				</p>
+			</div>
 
-			<h2 data-i18n="updates">Updates</h2>
-			<p data-i18n="updatesText">
-				This privacy policy may be updated in the future. Changes will
-				be reflected in the extension's store listing and in this
-				privacy policy document.
-			</p>
+			<div class="policy-section">
+				<h2 data-i18n="updates">Updates</h2>
+				<p data-i18n="updatesText">
+					This privacy policy may be updated in the future. Changes
+					will be reflected in the extension's store listing and in
+					this privacy policy document.
+				</p>
+			</div>
 
-			<h2 data-i18n="contact">Contact</h2>
-			<p data-i18n="contactText">
-				If you have any questions about this privacy policy, you can
-				contact the developer through the Chrome Web Store support
-				channel.
-			</p>
+			<div class="policy-section">
+				<h2 data-i18n="contact">Contact</h2>
+				<p data-i18n="contactText">
+					If you have any questions about this privacy policy, you can
+					contact the developer through the Chrome Web Store support
+					channel.
+				</p>
+			</div>
 
 			<p><em data-i18n="lastUpdated">Last updated: January 2024</em></p>
+
+			<a href="options.html" class="back-button">← Back to Settings</a>
 		</div>
 
 		<script src="i18n.js"></script>
-		<script>
-			// Add privacy policy translations
-			translations.en.dataCollection = 'Data Collection';
-			translations.en.dataCollectionText =
-				'The Font Changer extension does not collect any user data. It operates completely locally on your device and does not transmit any information to external servers.';
-			translations.en.permissions = 'Permissions';
-			translations.en.permissionsText =
-				'This extension requires permission to access all websites in order to apply font changes. The extension only modifies the appearance of websites you visit and does not read, collect, or transmit any of your browsing data.';
-			translations.en.localStorage = 'Local Storage';
-			translations.en.localStorageText =
-				"The extension does not store any personal information. Any preferences you set will be stored locally in your browser using Chrome's storage API and will not be shared with anyone.";
-			translations.en.updates = 'Updates';
-			translations.en.updatesText =
-				"This privacy policy may be updated in the future. Changes will be reflected in the extension's store listing and in this privacy policy document.";
-			translations.en.contact = 'Contact';
-			translations.en.contactText =
-				'If you have any questions about this privacy policy, you can contact the developer through the Chrome Web Store support channel.';
-			translations.en.lastUpdated = 'Last updated: January 2024';
-
-			translations.ru.dataCollection = 'Сбор данных';
-			translations.ru.dataCollectionText =
-				'Расширение Font Changer не собирает никаких пользовательских данных. Оно работает полностью локально на вашем устройстве и не передает информацию на внешние серверы.';
-			translations.ru.permissions = 'Разрешения';
-			translations.ru.permissionsText =
-				'Это расширение требует разрешения на доступ ко всем веб-сайтам для применения изменений шрифта. Расширение только изменяет внешний вид посещаемых вами веб-сайтов и не читает, не собирает и не передает никаких данных о вашем просмотре.';
-			translations.ru.localStorage = 'Локальное хранилище';
-			translations.ru.localStorageText =
-				'Расширение не хранит никакой личной информации. Любые настройки, которые вы устанавливаете, будут храниться локально в вашем браузере с помощью API хранилища Chrome и не будут переданы никому.';
-			translations.ru.updates = 'Обновления';
-			translations.ru.updatesText =
-				'Эта политика конфиденциальности может быть обновлена в будущем. Изменения будут отражены в списке расширений магазина Chrome и в этом документе о политике конфиденциальности.';
-			translations.ru.contact = 'Контакты';
-			translations.ru.contactText =
-				'Если у вас есть вопросы об этой политике конфиденциальности, вы можете связаться с разработчиком через канал поддержки Chrome Web Store.';
-			translations.ru.lastUpdated = 'Последнее обновление: январь 2024';
-
-			translations.uk.dataCollection = 'Збір даних';
-			translations.uk.dataCollectionText =
-				'Розширення Font Changer не збирає жодних користувацьких даних. Воно працює повністю локально на вашому пристрої і не передає інформацію на зовнішні сервери.';
-			translations.uk.permissions = 'Дозволи';
-			translations.uk.permissionsText =
-				'Це розширення потребує дозволу на доступ до всіх веб-сайтів для застосування змін шрифту. Розширення лише змінює зовнішній вигляд веб-сайтів, які ви відвідуєте, і не читає, не збирає та не передає жодних даних про ваш перегляд.';
-			translations.uk.localStorage = 'Локальне сховище';
-			translations.uk.localStorageText =
-				'Розширення не зберігає жодної особистої інформації. Будь-які налаштування, які ви встановлюєте, зберігатимуться локально у вашому браузері за допомогою API сховища Chrome і не будуть передані нікому.';
-			translations.uk.updates = 'Оновлення';
-			translations.uk.updatesText =
-				'Ця політика конфіденційності може бути оновлена в майбутньому. Зміни будуть відображені в списку розширень магазину Chrome та в цьому документі про політику конфіденційності.';
-			translations.uk.contact = 'Контакти';
-			translations.uk.contactText =
-				"Якщо у вас є питання щодо цієї політики конфіденційності, ви можете зв'язатися з розробником через канал підтримки Chrome Web Store.";
-			translations.uk.lastUpdated = 'Останнє оновлення: січень 2024';
-		</script>
+		<script src="privacy.js"></script>
 	</body>
 </html>

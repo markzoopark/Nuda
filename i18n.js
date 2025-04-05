@@ -1,5 +1,5 @@
 // Translations for all supported languages
-const translations = {
+var translations = {
 	en: {
 		// Popup translations
 		fontApplied: 'Font is applied globally',
