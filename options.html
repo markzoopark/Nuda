@@ -455,7 +455,7 @@
 	<body>
 		<div class="container">
 			<div class="language-selector">
-				<label for="language-select">Language:</label>
+				<label for="language-select" data-i18n="language">Language:</label>
 				<select
 					id="language-select"
 					style="width: auto; display: inline-block; margin-bottom: 0"
@@ -466,16 +466,16 @@
 				</select>
 			</div>
 
-			<h1>Font Changer Options</h1>
+			<h1 data-i18n="optionsTitle">Nuda Options</h1>
 
 			<div class="option-group">
-				<h2>Font Settings</h2>
+				<h2 data-i18n="fontSettings">Font Settings</h2>
 				<p>
 					Choose a preset font or enter the name of any font installed
 					on your computer.
 				</p>
 
-				<label for="font-select">Choose from list:</label>
+				<label for="font-select" data-i18n="chooseFromList">Choose from list:</label>
 				<select id="font-select">
 					<!-- Sans-serif шрифты -->
 					<option value="Arial">Arial</option>
@@ -488,16 +488,16 @@
 					<!-- Monospace шрифты -->
 					<option value="Courier New">Courier New</option>
 
-					<option value="custom">Custom font...</option>
+					<option value="custom" data-i18n="customFont">Custom font...</option>
 				</select>
 
 				<div id="custom-font-container" style="display: none">
-					<div class="or-separator">or</div>
-					<label for="custom-font">Enter font name:</label>
+					<div class="or-separator" data-i18n="or">or</div>
+					<label for="custom-font" data-i18n="enterFontName">Enter font name:</label>
 					<input
 						type="text"
 						id="custom-font"
-						placeholder="Enter exact font name"
+						placeholder="Enter exact font name" data-i18n-placeholder="exactFontName"
 					/>
 					<p class="note">
 						Note: the font must be installed on your computer
@@ -505,25 +505,25 @@
 				</div>
 
 				<div class="font-preview">
-					<p>Font preview:</p>
+					<p data-i18n="fontPreview">Font preview:</p>
 					<p id="preview-text">
 						The quick brown fox jumps over the lazy dog. 0123456789
 					</p>
 				</div>
 
-				<button id="save">Save Settings</button>
-				<div id="status" class="status">Settings saved</div>
+				<button id="save" data-i18n="saveSettings">Save Settings</button>
+				<div id="status" class="status" data-i18n="settingsSaved">Settings saved</div>
 			</div>
 
 			<div class="option-group">
-				<h2>About</h2>
+				<h2 data-i18n="about">About</h2>
 				<p>
-					Font Changer replaces all fonts on web pages with your
-					selected font.
+					Nuda replaces all fonts on web pages with your selected
+					font.
 				</p>
-				<p>Version: 1.0.0</p>
+				<p data-i18n="version">Version: 1.0.0</p>
 				<p>
-					<a href="privacy.html">Privacy Policy</a>
+					<a href="privacy.html" data-i18n="privacyPolicy">Privacy Policy</a>
 				</p>
 			</div>
 		</div>

@@ -7,9 +7,57 @@ const customFontInput = document.getElementById('custom-font');
 const previewText = document.getElementById('preview-text');
 const saveButton = document.getElementById('save');
 const status = document.getElementById('status');
+const languageSelect = document.getElementById('language-select');
 
 // Загружаем сохраненные настройки при загрузке страницы
-document.addEventListener('DOMContentLoaded', loadOptions);
+document.addEventListener('DOMContentLoaded', function () {
+	loadOptions();
+	initLanguage();
+	translateUI();
+});
+
+// Функция инициализации языка
+function initLanguage() {
+	chrome.storage.sync.get({ language: 'en' }, function (items) {
+		languageSelect.value = items.language;
+	});
+
+	// Обработчик изменения языка
+	languageSelect.addEventListener('change', function () {
+		chrome.storage.sync.set(
+			{ language: languageSelect.value },
+			function () {
+				translateUI();
+			}
+		);
+	});
+}
+
+// Функция перевода интерфейса
+function translateUI() {
+	chrome.storage.sync.get({ language: 'en' }, function (items) {
+		const lang = items.language;
+		const elements = document.querySelectorAll('[data-i18n]');
+
+		elements.forEach(function (element) {
+			const key = element.getAttribute('data-i18n');
+			if (translations[lang] && translations[lang][key]) {
+				element.textContent = translations[lang][key];
+			}
+		});
+
+		// Переводим плейсхолдеры
+		const inputElements = document.querySelectorAll(
+			'input[data-i18n-placeholder]'
+		);
+		inputElements.forEach(function (element) {
+			const key = element.getAttribute('data-i18n-placeholder');
+			if (translations[lang] && translations[lang][key]) {
+				element.placeholder = translations[lang][key];
+			}
+		});
+	});
+}
 
 // Функция загрузки сохраненных настроек
 function loadOptions() {

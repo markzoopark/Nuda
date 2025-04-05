@@ -367,17 +367,19 @@
 			</select>
 		</div>
 
-		<h1>Font Changer</h1>
+		<h1 data-i18n="extensionName">Font Changer</h1>
 
-		<div id="success-message" class="message">
+		<div id="success-message" class="message" data-i18n="fontApplied">
 			Font has been applied to all tabs
 		</div>
 
-		<div id="error-message" class="message">Error applying font</div>
+		<div id="error-message" class="message" data-i18n="fontError">
+			Error applying font
+		</div>
 
 		<div class="toggle-container">
 			<div class="toggle-row">
-				<div class="status-text">Status:</div>
+				<div class="status-text" data-i18n="status">Status:</div>
 				<label class="switch">
 					<input type="checkbox" id="enableToggle" />
 					<span class="slider"></span>
@@ -387,14 +389,18 @@
 			<div class="divider"></div>
 
 			<div class="options-row">
-				<button id="optionsBtn" class="options-btn">
+				<button
+					id="optionsBtn"
+					class="options-btn"
+					data-i18n="changeFont"
+				>
 					Font Settings
 				</button>
 			</div>
 		</div>
 
 		<div class="font-info">
-			<span>Current font:</span>
+			<span data-i18n="currentFont">Current font:</span>
 			<span id="currentFontName" class="font-name">Default</span>
 		</div>
 

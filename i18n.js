@@ -6,8 +6,11 @@ var translations = {
 		currentFont: 'Current font:',
 		changeFont: 'Change Font',
 		privacyPolicy: 'Privacy Policy',
+		status: 'Status:',
+		fontError: 'Error applying font',
 
 		// Options page translations
+		optionsTitle: 'Nuda Options',
 		fontSettings: 'Font Settings',
 		fontDescription:
 			'Choose a preset font or enter the name of any font installed on your computer.',
@@ -15,7 +18,7 @@ var translations = {
 		customFont: 'Custom font...',
 		or: 'or',
 		enterFontName: 'Enter font name:',
-		enterExactFontName: 'Enter exact font name',
+		exactFontName: 'Enter exact font name',
 		fontNote: 'Note: the font must be installed on your computer',
 		fontPreview: 'Font preview:',
 		saveSettings: 'Save Settings',
@@ -24,6 +27,9 @@ var translations = {
 		extensionDescription:
 			'Font Changer replaces all fonts on web pages with your selected font.',
 		version: 'Version: 1.0.0',
+		language: 'Language:',
+		extensionName: 'Font Changer',
+		errorApplying: 'Error applying font',
 	},
 	ru: {
 		// Popup translations
@@ -31,16 +37,19 @@ var translations = {
 		currentFont: 'Текущий шрифт:',
 		changeFont: 'Изменить шрифт',
 		privacyPolicy: 'Политика конфиденциальности',
+		status: 'Статус:',
+		fontError: 'Ошибка при применении шрифта',
 
 		// Options page translations
+		optionsTitle: 'Настройки Nuda',
 		fontSettings: 'Настройки шрифта',
 		fontDescription:
 			'Выберите предустановленный шрифт или введите название любого шрифта, установленного на вашем компьютере.',
-		chooseFromList: 'Выберите из списка:',
-		customFont: 'Другой шрифт...',
+		chooseFromList: 'Выбрать из списка:',
+		customFont: 'Свой шрифт...',
 		or: 'или',
 		enterFontName: 'Введите название шрифта:',
-		enterExactFontName: 'Введите точное название шрифта',
+		exactFontName: 'Введите точное название шрифта',
 		fontNote:
 			'Примечание: шрифт должен быть установлен на вашем компьютере',
 		fontPreview: 'Предпросмотр шрифта:',
@@ -48,8 +57,11 @@ var translations = {
 		settingsSaved: 'Настройки сохранены',
 		about: 'О расширении',
 		extensionDescription:
-			'Font Changer меняет все шрифты на веб-страницах на выбранный вами шрифт.',
+			'Nuda заменяет все шрифты на веб-страницах на выбранный вами шрифт.',
 		version: 'Версия: 1.0.0',
+		language: 'Язык:',
+		extensionName: 'Замена шрифта',
+		errorApplying: 'Ошибка применения шрифта',
 	},
 	uk: {
 		// Popup translations
@@ -57,24 +69,31 @@ var translations = {
 		currentFont: 'Поточний шрифт:',
 		changeFont: 'Змінити шрифт',
 		privacyPolicy: 'Політика конфіденційності',
+		status: 'Статус:',
+		fontError: 'Помилка при застосуванні шрифту',
 
 		// Options page translations
+		optionsTitle: 'Налаштування Nuda',
 		fontSettings: 'Налаштування шрифту',
 		fontDescription:
 			"Виберіть попередньо встановлений шрифт або введіть назву будь-якого шрифту, встановленого на вашому комп'ютері.",
-		chooseFromList: 'Виберіть зі списку:',
-		customFont: 'Інший шрифт...',
+		chooseFromList: 'Вибрати зі списку:',
+		customFont: 'Власний шрифт...',
 		or: 'або',
 		enterFontName: 'Введіть назву шрифту:',
-		enterExactFontName: 'Введіть точну назву шрифту',
-		fontNote: "Примітка: шрифт має бути встановлений на вашому комп'ютері",
+		exactFontName: 'Введіть точну назву шрифту',
+		fontNote:
+			"Примітка: шрифт повинен бути встановлений на вашому комп'ютері",
 		fontPreview: 'Попередній перегляд шрифту:',
 		saveSettings: 'Зберегти налаштування',
-		settingsSaved: 'Налаштування збережено',
+		settingsSaved: 'Налаштування збережені',
 		about: 'Про розширення',
 		extensionDescription:
-			'Font Changer змінює всі шрифти на веб-сторінках на вибраний вами шрифт.',
+			'Nuda замінює всі шрифти на веб-сторінках на вибраний вами шрифт.',
 		version: 'Версія: 1.0.0',
+		language: 'Мова:',
+		extensionName: 'Заміна шрифту',
+		errorApplying: 'Помилка застосування шрифту',
 	},
 };
 
