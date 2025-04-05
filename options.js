@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', loadOptions);
 function loadOptions() {
 	chrome.storage.sync.get(
 		{
-			fontFamily: 'Fira Code', // Значение по умолчанию
+			fontFamily: 'Arial', // Значение по умолчанию
 		},
 		function (items) {
 			// Проверяем, если шрифт из предустановленных
@@ -49,7 +49,7 @@ function saveOptions() {
 		selectedFont = customFontInput.value.trim();
 		// Если пользовательский шрифт не указан, используем значение по умолчанию
 		if (!selectedFont) {
-			selectedFont = 'Fira Code';
+			selectedFont = 'Arial';
 		}
 	}
 

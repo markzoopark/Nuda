@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	chrome.storage.sync.get(
 		{
 			enabled: true, // Включено по умолчанию
-			fontFamily: 'Fira Code', // Шрифт по умолчанию
+			fontFamily: 'Arial', // Шрифт по умолчанию
 		},
 		function (items) {
 			// Отображаем текущий шрифт
