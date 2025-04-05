@@ -6,262 +6,399 @@
 		<title>Font Changer</title>
 		<style>
 			:root {
-				--primary-color: #4361ee;
-				--primary-hover: #3a56d4;
+				--primary-color: #7a51c4; /* Насыщенный аметистовый */
+				--primary-hover: #9168dc; /* Светлее, с аметистовым оттенком */
+				--primary-gradient: linear-gradient(
+					135deg,
+					#5d3f91,
+					#7a4dbe,
+					#6c45a6
+				);
+				--primary-light: #a17de3; /* Светлый аметистовый */
+				--primary-dark: #432c6a; /* Тёмный пурпурный */
+				--primary-shadow: rgba(
+					122,
+					81,
+					196,
+					0.3
+				); /* Тень основного цвета */
+
 				--success-color: #4caf50;
-				--bg-color: #f9f9fb;
-				--card-bg: #ffffff;
-				--text-color: #333333;
-				--text-secondary: #666666;
-				--border-color: #e0e0e0;
-				--shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
-				--shadow-md: 0 4px 10px rgba(0, 0, 0, 0.12);
-				--shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+				--bg-color: #1a1521; /* Тёмный фон с пурпурным оттенком */
+				--card-bg: #28202f; /* Тёмная карточка */
+				--text-color: #e6e0f0; /* Светлый текст с пурпурным оттенком */
+				--text-secondary: #b8add2; /* Вторичный текст */
+				--border-color: #3d2f51; /* Темно-пурпурная граница */
+
+				--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+				--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+				--shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.4);
+
 				--radius-sm: 6px;
 				--radius-md: 10px;
 				--radius-lg: 16px;
 				--transition-normal: all 0.3s ease;
 			}
 
-			body {
-				font-family: system-ui, -apple-system, sans-serif;
+			* {
+				box-sizing: border-box;
 				margin: 0;
 				padding: 0;
-				width: 280px;
+			}
+
+			body {
+				font-family: system-ui, -apple-system, BlinkMacSystemFont,
+					'Segoe UI', Roboto, sans-serif;
+				width: 320px;
 				background-color: var(--bg-color);
 				color: var(--text-color);
-			}
-
-			.container {
 				padding: 20px;
-				animation: fadeIn 0.4s ease;
+				position: relative;
+				overflow: hidden;
 			}
 
-			@keyframes fadeIn {
+			body::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 150px;
+				width: 150px;
+				background: var(--primary-gradient);
+				opacity: 0.07;
+				border-radius: 50%;
+				transform: translate(50%, -50%);
+				filter: blur(30px);
+				z-index: 0;
+			}
+
+			h1 {
+				font-size: 1.7rem;
+				margin-bottom: 15px;
+				color: var(--text-color);
+				font-weight: 700;
+				position: relative;
+				display: inline-block;
+				z-index: 1;
+				letter-spacing: 0.5px;
+			}
+
+			h1:after {
+				content: '';
+				position: absolute;
+				width: 50%;
+				height: 3px;
+				background: var(--primary-gradient);
+				bottom: -4px;
+				left: 0;
+				border-radius: 2px;
+			}
+
+			.toggle-container {
+				margin-bottom: 20px;
+				padding: 15px;
+				background-color: var(--card-bg);
+				border-radius: var(--radius-md);
+				box-shadow: var(--shadow-md);
+				position: relative;
+				z-index: 1;
+				border: 1px solid var(--border-color);
+				transition: var(--transition-normal);
+
+				/* Эффект премиального матового покрытия */
+				background-image: linear-gradient(
+						to right,
+						rgba(122, 81, 196, 0.05),
+						rgba(122, 81, 196, 0.01)
+					),
+					linear-gradient(
+						to bottom,
+						rgba(122, 81, 196, 0.06),
+						rgba(0, 0, 0, 0.2)
+					);
+			}
+
+			.toggle-container:hover {
+				box-shadow: var(--shadow-lg), 0 0 15px rgba(122, 81, 196, 0.2);
+				transform: translateY(-2px);
+			}
+
+			.toggle-container::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 5px;
+				height: 100%;
+				background: var(--primary-gradient);
+				opacity: 0.9;
+				border-top-left-radius: var(--radius-md);
+				border-bottom-left-radius: var(--radius-md);
+			}
+
+			.toggle-row {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.status-text {
+				color: var(--text-color);
+				font-weight: 600;
+				font-size: 0.95rem;
+			}
+
+			/* Toggle Switch */
+			.switch {
+				position: relative;
+				display: inline-block;
+				width: 50px;
+				height: 26px;
+			}
+
+			.switch input {
+				opacity: 0;
+				width: 0;
+				height: 0;
+			}
+
+			.slider {
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: rgba(255, 255, 255, 0.1);
+				transition: var(--transition-normal);
+				border-radius: 34px;
+				box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+			}
+
+			.slider:before {
+				position: absolute;
+				content: '';
+				height: 18px;
+				width: 18px;
+				left: 4px;
+				bottom: 4px;
+				background-color: var(--text-color);
+				transition: var(--transition-normal);
+				border-radius: 50%;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+			}
+
+			input:checked + .slider {
+				background: var(--primary-gradient);
+			}
+
+			input:focus + .slider {
+				box-shadow: 0 0 1px var(--primary-color);
+			}
+
+			input:checked + .slider:before {
+				transform: translateX(24px);
+			}
+
+			.options-row {
+				margin-top: 15px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+
+			.options-btn {
+				background: rgba(122, 81, 196, 0.1);
+				border: 1px solid var(--border-color);
+				color: var(--text-color);
+				padding: 10px 15px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 0.9rem;
+				font-weight: 500;
+				margin-top: 10px;
+				cursor: pointer;
+				border-radius: var(--radius-sm);
+				transition: var(--transition-normal);
+				box-shadow: var(--shadow-sm);
+				position: relative;
+				overflow: hidden;
+				flex: 1;
+			}
+
+			.options-btn:hover {
+				border-color: var(--primary-color);
+				box-shadow: var(--shadow-md), 0 0 10px rgba(122, 81, 196, 0.3);
+				transform: translateY(-2px);
+				background-color: rgba(122, 81, 196, 0.15);
+			}
+
+			.options-btn::after {
+				content: '';
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				background-color: rgba(255, 255, 255, 0.1);
+				border-radius: 50%;
+				transform: scale(0);
+				top: calc(50% - 25px);
+				left: calc(50% - 25px);
+				transition: transform 0.4s ease-out;
+			}
+
+			.options-btn:active::after {
+				transform: scale(3);
+				opacity: 0;
+			}
+
+			.divider {
+				width: 100%;
+				height: 1px;
+				background: var(--border-color);
+				margin: 15px 0;
+			}
+
+			.message {
+				padding: 12px 15px;
+				margin-bottom: 15px;
+				border-radius: var(--radius-sm);
+				position: relative;
+				font-size: 0.9rem;
+				line-height: 1.5;
+				display: none;
+				background-color: rgba(76, 175, 80, 0.1);
+				color: #2e7d32;
+				border-left: 3px solid var(--success-color);
+				animation: slideDown 0.3s ease forwards;
+			}
+
+			@keyframes slideDown {
 				from {
 					opacity: 0;
+					transform: translateY(-10px);
 				}
 				to {
 					opacity: 1;
+					transform: translateY(0);
 				}
-			}
-
-			.status {
-				color: var(--success-color);
-				font-weight: 600;
-				margin: 12px 0;
-				padding: 8px 12px;
-				background-color: rgba(76, 175, 80, 0.08);
-				border-radius: var(--radius-sm);
-				display: flex;
-				align-items: center;
-				gap: 8px;
-			}
-
-			.status::before {
-				content: '✓';
-				display: inline-block;
-				font-weight: bold;
-			}
-
-			.current-font {
-				margin: 15px 0;
-				padding: 12px 15px;
-				background: linear-gradient(145deg, #ffffff, #f5f5f5);
-				border-radius: var(--radius-md);
-				font-weight: 500;
-				color: var(--primary-color);
-				box-shadow: var(--shadow-sm);
-				transition: var(--transition-normal);
-				border: 1px solid rgba(0, 0, 0, 0.05);
-				position: relative;
-				overflow: hidden;
-			}
-
-			.current-font:hover {
-				box-shadow: var(--shadow-md);
-				transform: translateY(-2px);
-			}
-
-			.current-font::after {
-				content: '';
-				position: absolute;
-				width: 30px;
-				height: 200%;
-				background: rgba(255, 255, 255, 0.2);
-				transform: rotate(35deg);
-				top: -50%;
-				left: -100px;
-				transition: all 0.6s ease;
-			}
-
-			.current-font:hover::after {
-				left: 110%;
-			}
-
-			.buttons {
-				margin-top: 20px;
-			}
-
-			.button {
-				display: inline-block;
-				background-color: var(--primary-color);
-				color: white;
-				padding: 10px 16px;
-				border-radius: var(--radius-sm);
-				text-decoration: none;
-				font-size: 14px;
-				font-weight: 500;
-				box-shadow: var(--shadow-sm);
-				transition: var(--transition-normal);
-				position: relative;
-				overflow: hidden;
-				width: 100%;
-				text-align: center;
-				box-sizing: border-box;
-			}
-
-			.button::after {
-				content: '';
-				position: absolute;
-				width: 30px;
-				height: 200%;
-				background: rgba(255, 255, 255, 0.3);
-				transform: rotate(35deg);
-				top: -50%;
-				left: -100px;
-				transition: all 0.6s ease;
-			}
-
-			.button:hover::after {
-				left: 110%;
-			}
-
-			.button:hover {
-				background-color: var(--primary-hover);
-				box-shadow: var(--shadow-md);
-				transform: translateY(-2px);
-			}
-
-			.button:active {
-				transform: translateY(0);
-				box-shadow: var(--shadow-sm);
-			}
-
-			.footer {
-				margin-top: 20px;
-				padding-top: 15px;
-				font-size: 12px;
-				border-top: 1px solid var(--border-color);
-				text-align: center;
-			}
-
-			.footer a {
-				color: var(--primary-color);
-				text-decoration: none;
-				font-weight: 500;
-				padding: 3px 6px;
-				border-radius: var(--radius-sm);
-				transition: var(--transition-normal);
-			}
-
-			.footer a:hover {
-				background-color: rgba(67, 97, 238, 0.08);
-				text-decoration: underline;
 			}
 
 			.language-selector {
 				text-align: right;
 				margin-bottom: 15px;
-				font-size: 12px;
-				display: flex;
-				justify-content: flex-end;
-				align-items: center;
+				position: relative;
+				z-index: 2;
 			}
 
 			.language-selector select {
-				margin-left: 5px;
-				font-size: 12px;
-				padding: 4px 8px;
+				background-color: var(--card-bg);
 				border: 1px solid var(--border-color);
 				border-radius: var(--radius-sm);
-				background-color: var(--card-bg);
+				padding: 6px 10px;
+				font-size: 0.8rem;
+				color: var(--text-color);
 				cursor: pointer;
+				outline: none;
 				transition: var(--transition-normal);
 			}
 
+			.language-selector select:hover {
+				border-color: var(--primary-light);
+			}
+
 			.language-selector select:focus {
-				outline: none;
 				border-color: var(--primary-color);
-				box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.15);
+				box-shadow: 0 0 0 3px var(--primary-shadow);
 			}
 
-			h2 {
-				margin-top: 0;
-				font-size: 1.4rem;
-				position: relative;
-				display: inline-block;
-				margin-bottom: 10px;
-			}
-
-			h2::after {
-				content: '';
-				position: absolute;
-				width: 40%;
-				height: 3px;
-				background: linear-gradient(
-					to right,
-					var(--primary-color),
-					transparent
-				);
-				bottom: -5px;
-				left: 0;
-				border-radius: 2px;
-			}
-
-			#current-font-container p {
-				color: var(--text-secondary);
+			.font-info {
+				margin-top: 15px;
 				font-size: 0.9rem;
-				margin-bottom: 5px;
-				font-weight: 500;
+				color: var(--text-secondary);
+				text-align: center;
+				position: relative;
+				z-index: 1;
+				background-color: rgba(122, 81, 196, 0.05);
+				padding: 10px;
+				border-radius: var(--radius-md);
+				border: 1px solid var(--border-color);
+			}
+
+			.font-name {
+				color: var(--primary-light);
+				font-weight: 700;
+				font-size: 1rem;
+				display: block;
+				margin-top: 5px;
+			}
+
+			/* Animate elements on page load */
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.toggle-container {
+				opacity: 0;
+				animation: fadeInUp 0.5s ease forwards;
+				animation-delay: 0.1s;
+			}
+
+			.font-info {
+				opacity: 0;
+				animation: fadeInUp 0.5s ease forwards;
+				animation-delay: 0.2s;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<div class="language-selector">
-				<select id="language-select">
-					<option value="en">English</option>
-					<option value="ru">Русский</option>
-					<option value="uk">Українська</option>
-				</select>
+		<div class="language-selector">
+			<select id="language-select">
+				<option value="en">EN</option>
+				<option value="ru">RU</option>
+				<option value="uk">UA</option>
+			</select>
+		</div>
+
+		<h1>Font Changer</h1>
+
+		<div id="success-message" class="message">
+			Font has been applied to all tabs
+		</div>
+
+		<div id="error-message" class="message">Error applying font</div>
+
+		<div class="toggle-container">
+			<div class="toggle-row">
+				<div class="status-text">Status:</div>
+				<label class="switch">
+					<input type="checkbox" id="enableToggle" />
+					<span class="slider"></span>
+				</label>
 			</div>
 
-			<h2>Font Changer</h2>
-			<p class="status" data-i18n="fontApplied">
-				Font is applied globally
-			</p>
+			<div class="divider"></div>
 
-			<div id="current-font-container">
-				<p data-i18n="currentFont">Current font:</p>
-				<div class="current-font" id="current-font">Loading...</div>
+			<div class="options-row">
+				<button id="optionsBtn" class="options-btn">
+					Font Settings
+				</button>
+				<button id="refreshBtn" class="options-btn">
+					Refresh Page
+				</button>
 			</div>
+		</div>
 
-			<div class="buttons">
-				<a
-					href="options.html"
-					target="_blank"
-					class="button"
-					data-i18n="changeFont"
-					>Change Font</a
-				>
-			</div>
-
-			<div class="footer">
-				<a href="privacy.html" target="_blank" data-i18n="privacyPolicy"
-					>Privacy Policy</a
-				>
-			</div>
+		<div class="font-info">
+			<span>Current font:</span>
+			<span id="currentFontName" class="font-name">Default</span>
 		</div>
 
 		<script src="i18n.js"></script>
