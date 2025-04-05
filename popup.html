@@ -284,34 +284,6 @@
 				}
 			}
 
-			.language-selector {
-				text-align: right;
-				margin-bottom: 15px;
-				position: relative;
-				z-index: 2;
-			}
-
-			.language-selector select {
-				background-color: var(--card-bg);
-				border: 1px solid var(--border-color);
-				border-radius: var(--radius-sm);
-				padding: 6px 10px;
-				font-size: 0.8rem;
-				color: var(--text-color);
-				cursor: pointer;
-				outline: none;
-				transition: var(--transition-normal);
-			}
-
-			.language-selector select:hover {
-				border-color: var(--primary-light);
-			}
-
-			.language-selector select:focus {
-				border-color: var(--primary-color);
-				box-shadow: 0 0 0 3px var(--primary-shadow);
-			}
-
 			.font-info {
 				margin-top: 15px;
 				font-size: 0.9rem;
@@ -359,14 +331,6 @@
 		</style>
 	</head>
 	<body>
-		<div class="language-selector">
-			<select id="language-select">
-				<option value="en">EN</option>
-				<option value="ru">RU</option>
-				<option value="uk">UA</option>
-			</select>
-		</div>
-
 		<h1 data-i18n="extensionName">Font Changer</h1>
 
 		<div id="success-message" class="message" data-i18n="fontApplied">

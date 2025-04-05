@@ -73,44 +73,4 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		});
 	});
-
-	// Обработчик смены языка
-	document
-		.getElementById('language-select')
-		.addEventListener('change', function (e) {
-			chrome.storage.sync.set({ language: e.target.value }, function () {
-				applyTranslations(e.target.value);
-			});
-		});
-
-	// Загружаем текущий язык
-	chrome.storage.sync.get({ language: 'en' }, function (data) {
-		document.getElementById('language-select').value = data.language;
-		applyTranslations(data.language);
-	});
 });
-
-// Функция для применения переводов
-function applyTranslations(language) {
-	if (!translations[language]) {
-		language = 'en'; // Fallback to English
-	}
-
-	// Get all elements with data-i18n attribute
-	const elements = document.querySelectorAll('[data-i18n]');
-	elements.forEach((element) => {
-		const key = element.getAttribute('data-i18n');
-		if (translations[language][key]) {
-			element.textContent = translations[language][key];
-		}
-	});
-
-	// Handle placeholders
-	const inputElements = document.querySelectorAll('[data-i18n-placeholder]');
-	inputElements.forEach((input) => {
-		const key = input.getAttribute('data-i18n-placeholder');
-		if (translations[language][key]) {
-			input.placeholder = translations[language][key];
-		}
-	});
-}

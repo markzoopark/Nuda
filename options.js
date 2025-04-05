@@ -7,57 +7,12 @@ const customFontInput = document.getElementById('custom-font');
 const previewText = document.getElementById('preview-text');
 const saveButton = document.getElementById('save');
 const status = document.getElementById('status');
-const languageSelect = document.getElementById('language-select');
 
 // Загружаем сохраненные настройки при загрузке страницы
 document.addEventListener('DOMContentLoaded', function () {
 	loadOptions();
-	initLanguage();
-	translateUI();
+	applyTranslations(); // Apply English translations
 });
-
-// Функция инициализации языка
-function initLanguage() {
-	chrome.storage.sync.get({ language: 'en' }, function (items) {
-		languageSelect.value = items.language;
-	});
-
-	// Обработчик изменения языка
-	languageSelect.addEventListener('change', function () {
-		chrome.storage.sync.set(
-			{ language: languageSelect.value },
-			function () {
-				translateUI();
-			}
-		);
-	});
-}
-
-// Функция перевода интерфейса
-function translateUI() {
-	chrome.storage.sync.get({ language: 'en' }, function (items) {
-		const lang = items.language;
-		const elements = document.querySelectorAll('[data-i18n]');
-
-		elements.forEach(function (element) {
-			const key = element.getAttribute('data-i18n');
-			if (translations[lang] && translations[lang][key]) {
-				element.textContent = translations[lang][key];
-			}
-		});
-
-		// Переводим плейсхолдеры
-		const inputElements = document.querySelectorAll(
-			'input[data-i18n-placeholder]'
-		);
-		inputElements.forEach(function (element) {
-			const key = element.getAttribute('data-i18n-placeholder');
-			if (translations[lang] && translations[lang][key]) {
-				element.placeholder = translations[lang][key];
-			}
-		});
-	});
-}
 
 // Функция загрузки сохраненных настроек
 function loadOptions() {
@@ -107,31 +62,14 @@ function saveOptions() {
 			fontFamily: selectedFont,
 		},
 		function () {
-			// Get current language
-			chrome.storage.sync.get(
-				{
-					language: 'en', // Default language
-				},
-				function (items) {
-					// Get and display the translated message
-					let message = 'Settings saved';
-					if (
-						translations[items.language] &&
-						translations[items.language].settingsSaved
-					) {
-						message = translations[items.language].settingsSaved;
-					}
+			// Обновляем интерфейс
+			status.textContent = 'Settings saved';
+			status.classList.add('success');
 
-					// Обновляем интерфейс
-					status.textContent = message;
-					status.classList.add('success');
-
-					// Скрываем сообщение через 3 секунды
-					setTimeout(function () {
-						status.classList.remove('success');
-					}, 3000);
-				}
-			);
+			// Скрываем сообщение через 3 секунды
+			setTimeout(function () {
+				status.classList.remove('success');
+			}, 3000);
 		}
 	);
 }

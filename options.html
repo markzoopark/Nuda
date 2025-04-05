@@ -454,18 +454,6 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="language-selector">
-				<label for="language-select" data-i18n="language">Language:</label>
-				<select
-					id="language-select"
-					style="width: auto; display: inline-block; margin-bottom: 0"
-				>
-					<option value="en">English</option>
-					<option value="ru">Русский</option>
-					<option value="uk">Українська</option>
-				</select>
-			</div>
-
 			<h1 data-i18n="optionsTitle">Nuda Options</h1>
 
 			<div class="option-group">
@@ -475,7 +463,9 @@
 					on your computer.
 				</p>
 
-				<label for="font-select" data-i18n="chooseFromList">Choose from list:</label>
+				<label for="font-select" data-i18n="chooseFromList"
+					>Choose from list:</label
+				>
 				<select id="font-select">
 					<!-- Sans-serif шрифты -->
 					<option value="Arial">Arial</option>
@@ -488,16 +478,21 @@
 					<!-- Monospace шрифты -->
 					<option value="Courier New">Courier New</option>
 
-					<option value="custom" data-i18n="customFont">Custom font...</option>
+					<option value="custom" data-i18n="customFont">
+						Custom font...
+					</option>
 				</select>
 
 				<div id="custom-font-container" style="display: none">
 					<div class="or-separator" data-i18n="or">or</div>
-					<label for="custom-font" data-i18n="enterFontName">Enter font name:</label>
+					<label for="custom-font" data-i18n="enterFontName"
+						>Enter font name:</label
+					>
 					<input
 						type="text"
 						id="custom-font"
-						placeholder="Enter exact font name" data-i18n-placeholder="exactFontName"
+						placeholder="Enter exact font name"
+						data-i18n-placeholder="exactFontName"
 					/>
 					<p class="note">
 						Note: the font must be installed on your computer
@@ -511,8 +506,12 @@
 					</p>
 				</div>
 
-				<button id="save" data-i18n="saveSettings">Save Settings</button>
-				<div id="status" class="status" data-i18n="settingsSaved">Settings saved</div>
+				<button id="save" data-i18n="saveSettings">
+					Save Settings
+				</button>
+				<div id="status" class="status" data-i18n="settingsSaved">
+					Settings saved
+				</div>
 			</div>
 
 			<div class="option-group">
@@ -523,7 +522,9 @@
 				</p>
 				<p data-i18n="version">Version: 1.0.0</p>
 				<p>
-					<a href="privacy.html" data-i18n="privacyPolicy">Privacy Policy</a>
+					<a href="privacy.html" data-i18n="privacyPolicy"
+						>Privacy Policy</a
+					>
 				</p>
 			</div>
 		</div>
