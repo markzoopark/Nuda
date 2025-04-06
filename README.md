@@ -1,89 +1,51 @@
-# Nuda - Chrome Extension
+# Nuda
 
-Chrome-расширение, которое автоматически меняет все шрифты на всех сайтах на выбранный вами шрифт.
+_Changes fonts across the web to the one you chose._
 
-## Функции
+## About
 
--   Мгновенное применение любого шрифта ко всем веб-страницам
--   Возможность выбора из предустановленных шрифтов или указания любого установленного шрифта
--   Работает автоматически без необходимости нажимать кнопки
--   Сохраняет ваши глаза от неоптимизированных шрифтов
--   Не собирает никаких данных о вашем использовании
+Nuda replaces all website fonts with your preferred font. Because sometimes the internet needs better typography.
 
-## Структура проекта
+## Features
 
-```
-nuda/
-├── manifest.json      - Манифест расширения
-├── content.js         - JavaScript для страниц
-├── styles.css         - Общие CSS стили
-├── popup.html         - HTML для всплывающего окна
-├── popup.js           - JavaScript для всплывающего окна
-├── options.html       - Страница настроек для выбора шрифта
-├── options.js         - JavaScript для страницы настроек
-├── privacy.html       - Политика конфиденциальности
-├── icons/             - Директория с иконками
-│   ├── icon16.png     - Иконка 16x16
-│   ├── icon48.png     - Иконка 48x48
-│   └── icon128.png    - Иконка 128x128
-└── README.md          - Этот файл
-```
+-   Instantly applies selected font to all websites
+-   Choose from presets or any font on your device
+-   Works automatically with zero configuration
+-   No data collection or tracking
 
-## Установка
+## Installation
 
-### Из Chrome Web Store
+**Chrome Web Store:**
 
-1. Перейдите в [Chrome Web Store](https://chrome.google.com/webstore)
-2. Найдите "Nuda" или перейдите по прямой ссылке (когда будет доступна)
-3. Нажмите "Установить"
+1. Visit [Chrome Web Store](https://chrome.google.com/webstore) (link will be updated)
+2. Search for "Nuda" and click "Install"
 
-### Установка из исходников
+**Manual Installation:**
 
-1. Скачайте или клонируйте этот репозиторий
-2. Откройте Chrome и перейдите по адресу `chrome://extensions/`
-3. Включите "Режим разработчика" (переключатель в правом верхнем углу)
-4. Нажмите "Загрузить распакованное расширение"
-5. Выберите директорию с расширением (где находится manifest.json)
+1. Download this repository
+2. Go to `chrome://extensions/`
+3. Enable "Developer mode"
+4. Click "Load unpacked" and select the Nuda folder
 
-## Использование
+## Usage
 
-1. После установки расширения все шрифты на сайтах будут автоматически заменены на "Fira Code" (по умолчанию)
-2. Чтобы изменить шрифт:
-    - Нажмите на иконку расширения в панели инструментов
-    - Нажмите кнопку "Изменить шрифт"
-    - Выберите один из предустановленных шрифтов или укажите название любого шрифта, установленного на вашем компьютере
-    - Нажмите "Сохранить настройки"
-3. Новый шрифт будет автоматически применен ко всем открытым и новым веб-страницам
+1. Install extension (Arial is applied by default)
+2. Click extension icon → "Change Font"
+3. Select font → "Save Settings"
 
-## Разработка
+## Privacy & Permissions
 
-### Требования
+-   **What we collect:** Nothing. Zero. Nada.
+-   **Permissions:** Only accesses website CSS to modify fonts
+-   All processing happens locally on your device
 
--   Для разработки расширения не требуются внешние зависимости
--   Chrome версии 88+ или другой браузер на базе Chromium
+## Manifest V3 Compliance
 
-### Запуск в режиме разработки
+-   Uses modern extension architecture
+-   No remote code execution
+-   Non-persistent background script
+-   Declarative content scripts
 
-1. Внесите необходимые изменения в код
-2. Перезагрузите расширение на странице `chrome://extensions/`
-
-### Сборка для публикации
-
-1. Убедитесь, что все файлы на месте и правильно настроены
-2. Архивируйте все файлы (ZIP)
-3. Загрузите архив в [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole/)
-
-## Политика конфиденциальности
-
-Расширение Nuda не собирает никаких пользовательских данных. Вся функциональность работает полностью локально на вашем устройстве. Подробную информацию можно найти в файле [privacy.html](privacy.html).
-
-## Будущие улучшения
-
--   Настройка размера шрифта
--   Настройка для отдельных сайтов (белый/черный список)
--   Темная/светлая темы для интерфейса
--   Возможность импорта/экспорта настроек
-
-## Лицензия
+## License
 
 MIT
