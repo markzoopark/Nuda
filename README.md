@@ -17,7 +17,7 @@ Nuda replaces all website fonts with your preferred font. Because sometimes the 
 
 **Chrome Web Store:**
 
-1. Visit [Chrome Web Store](https://chrome.google.com/webstore) (link will be updated)
+1. Visit [Chrome Web Store](https://chromewebstore.google.com/detail/nuda/dllkpbbcdgidgdkbfaepcmhgfkjclnlk)
 2. Search for "Nuda" and click "Install"
 
 **Manual Installation:**
